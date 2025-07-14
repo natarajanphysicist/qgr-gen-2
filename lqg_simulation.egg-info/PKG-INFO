@@ -1,0 +1,19 @@
+Metadata-Version: 2.4
+Name: lqg_simulation
+Version: 0.1.0
+Summary: Research-grade Loop Quantum Gravity simulation toolkit (spin networks, spinfoams, quantum, visualization, plugins)
+Author: natarajanphysicist and contributors
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Requires-Dist: numpy
+Requires-Dist: matplotlib
+Requires-Dist: networkx
+Requires-Dist: sympy
+Requires-Dist: ipywidgets
+Dynamic: author
+Dynamic: classifier
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
