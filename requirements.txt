@@ -1,0 +1,6 @@
+sympy>=1.12
+numpy>=1.21 # Good for any numerical work, sympy might use it
+scipy>=1.7 # For networkx kamada_kawai_layout and other potential uses
+# For later steps
+matplotlib>=3.5
+networkx>=2.8
