@@ -1,100 +1,79 @@
-# LQG Simulation Tool
+# Quantum Gravity Simulation Platform
 
-A Python-based simulation tool for exploring concepts in Loop Quantum Gravity (LQG).
+## Overview
+This platform is an advanced research and educational tool for Loop Quantum Gravity (LQG) and spinfoam models. It provides interactive modules for constructing, visualizing, and simulating spin networks, calculating Wigner symbols, exploring spinfoam amplitudes, and running quantum gravity-inspired quantum computing simulations.
+
+
+## Features
+- **Spin Networks**: Build, visualize, and analyze spin networks. Add nodes/links manually or generate random networks. View network statistics and node/link details.
+- **Entanglement Entropy for Spin Networks**: Select a region (set of nodes) and compute the entanglement entropy for that region directly in the Spin Networks page (Quantum Information panel).
+- **Wigner Symbols**: Compute 3j, 6j, 9j, 12j, and 15j Wigner symbols. Visualize properties and calculation history.
+- **Spinfoam Models**: Generate and visualize spinfoam complexes (EPRL-FK, Ooguri, Barrett-Crane). Calculate vertex and transition amplitudes, analyze quantum fluctuations, and compute partition functions. Includes a research/citation panel and recent calculations log.
+- **Boundary Entanglement Entropy for Spinfoam Models**: Select a set of boundary vertices and compute the entanglement entropy for the boundary region in the Spinfoam Models page (Quantum Information panel).
+- **Geometric Observables**: Calculate area, volume, curvature, torsion, holonomy, Wilson loops, Ricci/Weyl tensors, field strength, quantum spectra, and semiclassical limits. Visualize area, volume, and length spectra.
+- **Quantum Computing**: Simulate quantum evolution, quantum bounce, entanglement, error correction, state tomography, and holographic duality using Qiskit or classical backends. Visualize results and quantum circuit statistics.
+- **Advanced Simulations**: Explore spacetime emergence, black hole physics, and cosmological models with interactive parameters and visualizations.
+- **Research Examples**: Run case studies on simple/constrained/thermal/hamiltonian evolution, singularity resolution, primordial perturbations, black hole information, and quantum cosmology.
+- **Research Trends & Citations**: Each major module includes a collapsible panel with recent research trends, long-standing problems, and key literature references.
+## How to Use Entanglement Entropy Features
+
+- **Spin Networks Page**: In the right panel, scroll to "Entanglement Entropy (Quantum Information)". Select one or more nodes to define a region and click "Compute Entanglement Entropy". The entropy for the selected region will be displayed.
+- **Spinfoam Models Page**: In the left panel, scroll to "Boundary Entanglement Entropy (Quantum Information)". Select one or more boundary vertices and click "Compute Boundary Entanglement Entropy". The entropy for the selected boundary region will be displayed.
+
+These features use a toy model for entropy (log of number of boundary links/faces). For research, you can extend these with more advanced quantum information calculations.
+
+## Getting Started
+1. **Install Requirements**
+   - Python 3.8+
+   - Install dependencies:
+     ```bash
+     pip install -r requirements.txt
+     ```
+2. **Run the App**
+   ```bash
+   streamlit run app.py
+   ```
+3. **Navigate**
+   - Use the sidebar to select modules: Spin Networks, Wigner Symbols, Spinfoam Models, Geometric Observables, Quantum Computing, Advanced Simulations, Research Examples.
 
 ## Project Structure
+- `app.py` — Main Streamlit app and UI logic
+- `core/` — Core simulation modules (spin networks, spinfoam, geometry, quantum computing, wigner symbols)
+- `utils/` — Visualization, plotting, and helper utilities
+- `examples/` — Research example modules
+- `attached_assets/` — Images and documentation assets
 
-- `lqg_simulation/`: Main package directory.
-  - `core/`: Core data structures like `SpinNetwork`, `Node`, `Link`.
-  - `mathematics/`: Mathematical functions, including Wigner symbols, etc.
-  - `observables/`: Functions for calculating geometric observables (volume, area).
-  - `dynamics/`: Code related to the evolution of spin networks, transition amplitudes. (Planned)
-  - `plotting/`: Visualization utilities.
-  - `utils/`: Helper functions and utilities.
-  - `examples/`: Example scripts demonstrating how to use the tool.
-  - `tests/`: Unit tests for the package.
-- `README.md`: This file.
-- `requirements.txt`: Python package dependencies. (To be added)
-- `setup.py`: Script for packaging and distribution. (To be added)
+## Research & Citations
+- Each module features a panel with:
+  - Recent research trends
+  - Long-standing open problems
+  - Key review articles and citations
 
-## Current Features (In Development)
+## Roadmap & Advanced Research Features
 
-- Basic spin network representation (nodes, links with spin-j values).
-- Wigner 3j, 6j, 9j, and 10j symbol calculations.
-- Placeholder vertex amplitude calculation.
-- Spinfoam Amplitudes (Ponzano-Regge Model for 3D Gravity):
-  - Generic amplitude calculation for an arbitrary 2-complex (triangulation) by automatically identifying all tetrahedra (vertices) and links (faces).
-  - Summation of the Pachner complex amplitude over a range of internal spins.
-- Basic Spin Network Dynamics:
-  - Asymptotic EPRL-FK vertex amplitude for 4D spinfoams (using the Regge action with the Immirzi parameter).
-  - Simple move: changing the spin of a link.
-  - Complex move: 1-to-4 Pachner move (subdividing a tetrahedron).
-- Geometric Observables:
-  - Calculation of the volume of a single quantum tetrahedron.
-  - Generic volume calculation for an arbitrary 2-complex by summing the volumes of all constituent tetrahedra.
-  - Calculation of 4D dihedral angles for a 4-simplex (using Cayley-Menger determinant).
-  - Calculation of the area of a surface (sum over pierced links).
-- Simple 2D spin network visualization (using NetworkX & Matplotlib).
+### Quantum Information & Holography (Planned)
+- Entanglement entropy calculations for spin networks and spinfoam boundaries
+- Holographic correspondence tools: compare bulk and boundary observables, visualize entanglement wedges
+- Quantum information panel: display entropy, mutual information, and holographic diagnostics
 
-## Advanced Features
+### Advanced Visualization (Planned)
+- Interactive 3D/4D visualization of spin networks and spinfoam complexes (WebGL/advanced Plotly)
+- Real-time manipulation: rotate, zoom, select/highlight nodes, links, faces
+- Animated evolution: play/pause controls and time sliders for network evolution, amplitude fluctuations, and cosmological bounces
+- Export animations as GIF/MP4 for research and presentations
 
-- **Plugin System:** Easily extend the toolkit with new observables, amplitudes, moves, or visualization methods. See `lqg_simulation/plugins/` and `docs/plugins.md`.
-- **Quantum Simulation:** Simulate spin networks as quantum circuits using Qiskit. See `lqg_simulation/quantum/quantum_sim.py` and `docs/quantum_sim.md`.
-- **Efficient Spinfoam Summation:** Monte Carlo and parallel summation for large-scale spinfoam calculations. See `lqg_simulation/dynamics/amplitudes.py` and `docs/spinfoam_summation.md`.
-- **3D/Animated Visualization:** Visualize spin networks in 3D. See `lqg_simulation/plotting/plot3d.py` and `docs/plot3d.md`.
-- **Jupyter/Interactive Workflows:** Example notebook in `lqg_simulation/examples/lqg_interactive_demo.ipynb` demonstrates interactive research workflows.
+### Future Directions
+- Parameter scans and batch simulations for automated research workflows
+- Machine learning integration for pattern discovery and symbolic regression
+- HPC/parallel computation support for large-scale simulations
+- Community features: export/import workflows, notebook integration, open problem playground
 
-## Getting Started (Example)
-
-```python
-# (This is a placeholder - will be updated as features are implemented)
-# from lqg_simulation.core import SpinNetwork
-
-# Create a spin network
-# sn = SpinNetwork()
-# n1 = sn.add_node(node_name="N1")
-# n2 = sn.add_node(node_name="N2")
-# sn.add_link(n1, n2, spin_j=1.0, link_name="L12")
-
-# sn.display()
-
-# Visualize (planned)
-# from lqg_simulation.plotting import plot_spin_network
-# plot_spin_network(sn)
-```
-
-## Example: Interactive Research Workflow (Jupyter)
-
-See `lqg_simulation/examples/lqg_interactive_demo.ipynb` for a full demo.
-
-```python
-from lqg_simulation.core.spin_network import SpinNetwork
-from lqg_simulation.plotting.plot3d import plot_spin_network_3d
-
-sn = SpinNetwork()
-n1 = sn.add_node(node_name="A", pos=[0,0,0])
-n2 = sn.add_node(node_name="B", pos=[1,0,0])
-sn.add_link(n1, n2, spin=1)
-fig, ax = plot_spin_network_3d(sn)
-fig.show()
-```
-
-## Development
-
-(Instructions for setting up a development environment, running tests, etc., will be added here.)
-
-```bash
-# Example:
-# python -m venv venv
-# source venv/bin/activate
-# pip install -r requirements.txt
-# pytest
-```
-
-## Contributing
-
-(Guidelines for contributing will be added here.)
+## Notes
+- Spinfoam amplitudes are generated with valid spin configurations to avoid zero results due to triangle inequality violations.
+- The platform is designed for both research and educational use in quantum gravity, LQG, and related fields.
 
 ## License
+For research and educational use only.
 
-(License information will be added here, e.g., MIT, GPL.)
+---
+**Quantum Gravity Simulation Platform** — Developed for theoretical physics research and education.
